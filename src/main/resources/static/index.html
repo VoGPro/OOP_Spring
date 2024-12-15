@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management System</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div id="app">
+    <!-- Controls section -->
+    <div id="controls" class="controls-section">
+        <button id="addBtn">Add</button>
+        <div class="sort-section">
+            <label for="sortSelect">Sort by:</label>
+            <select id="sortSelect">
+                <option value="vin">VIN</option>
+                <option value="brand">Brand</option>
+                <option value="model">Model</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Filters section -->
+    <div id="filters" class="filters-section">
+        <div class="input-group">
+            <label for="vinFilter">VIN:</label>
+            <input type="text" id="vinFilter" placeholder="VIN">
+        </div>
+        <div class="input-group">
+            <label for="brandFilter">Brand:</label>
+            <input type="text" id="brandFilter" placeholder="Brand">
+        </div>
+        <div class="input-group">
+            <label for="modelFilter">Model:</label>
+            <input type="text" id="modelFilter" placeholder="Model">
+        </div>
+        <div class="filter-buttons">
+            <button id="applyFiltersBtn">Apply Filters</button>
+            <button id="clearFiltersBtn">Clear Filters</button>
+        </div>
+    </div>
+
+    <!-- Table section -->
+    <div class="table-container">
+        <table id="carTable" class="car-table">
+            <thead>
+            <tr>
+                <th class="row-number-header">№</th>
+                <th>VIN</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Navigation section -->
+    <div id="navigation" class="navigation-section">
+        <button id="prevBtn">Previous</button>
+        <span id="pageInfo">Page: 1/1</span>
+        <button id="nextBtn">Next</button>
+    </div>
+
+    <!-- Car Dialog -->
+    <div id="carDialog" class="modal">
+        <div class="modal-content">
+            <h2 id="dialogTitle">Add New Car</h2>
+            <form id="carForm">
+                <div class="form-group">
+                    <label for="vin">VIN:</label>
+                    <input type="text" id="vin" required pattern="[A-Z0-9]{17}">
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" required min="1886" max="2100">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" required step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" required>
+                </div>
+                <div class="button-container">
+                    <button type="submit" id="saveBtn">Save</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Car Details Dialog -->
+    <div id="carDetailsDialog" class="modal">
+        <div class="modal-content details-dialog">
+            <h2>Car Details</h2>
+            <div id="carDetails"></div>
+            <div class="button-container">
+                <button onclick="closeDetailsDialog()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>
